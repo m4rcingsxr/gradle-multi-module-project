@@ -1,0 +1,47 @@
+[versions]
+# global versions
+jdk = "21"
+
+# dependency versions
+kotlinLogging = "7.0.6"
+lorem = "2.2"
+j2html = "1.6.0"
+
+# plugin versions
+springBoot = "3.4.4"
+springGradleDependencyManagement = "1.1.7"
+kotlin = "2.1.20"
+detekt = "1.23.8"
+dokka = "2.0.0"
+
+
+[plugins]
+
+[libraries]
+# project dependencies
+# Kotlin logger
+microutils-kotlinLogging = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlinLogging" }
+# Generate dummy data - lorem ipsum
+lorem = { module = "com.thedeanda:lorem", version.ref = "lorem" }
+# Build HTML with Java/Kotlin code
+j2html = { module = "com.j2html:j2html", version.ref = "j2html" }
+
+# test dependencies
+
+# buildSrc dependencies (plugins)
+kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-allopenPlugin = { module = "org.jetbrains.kotlin:kotlin-allopen", version.ref = "kotlin" }
+kotlin-noargPlugin = { module = "org.jetbrains.kotlin:kotlin-noarg", version.ref = "kotlin" }
+springBoot-gradlePlugin = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "springBoot" }
+spring-dependencyManagementPlugin = { module = "io.spring.gradle:dependency-management-plugin", version.ref = "springGradleDependencyManagement" }
+detekt-gradlePlugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
+dokka-gradlePlugin = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
+
+# Detekt plugins
+detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
+
+[bundles]
+# Each bundle name (logging, lorem, j2html) points to a list of library aliases (declared earlier under [libraries]):
+logging = ["microutils-kotlinLogging"]
+lorem = ["lorem"]
+j2html = ["j2html"]
